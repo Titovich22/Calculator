@@ -56,7 +56,25 @@ public:
 
         return sum;
     }
-
+    int Sum(int a, int b)
+    {
+        int sum = a + b;
+        return sum;
+    }
+    int otr(int a, int b)
+    {
+        int otr = a - b;
+        return otr;
+    }
+    int mult(int a, int b)
+    {
+        int mult = a * b;
+        return mult;
+    }
+    int spl(int a, int b)
+    {
+        int spl = a / b;
+        return spl;
     // Подзадача 2
     static double CircleArea(double radius)
     {
