@@ -1,10 +1,11 @@
-﻿#include <iostream> // Используем заголовочный файл потока ввода/вывода
-#include <cmath> // Используем заголовочный файл математических функций
+﻿#include <iostream>
+#include <cmath>
 
 #include "Переменные.cpp"
 #include "Консоль.cpp"
 
-using namespace std; // Используем стандартную библиотеку
+
+using namespace std; // Используем стандартную библиоте
 
 /*
     Групповое занятие: совместными усилиями реализовать доп. функции калькулятора
@@ -29,34 +30,51 @@ using namespace std; // Используем стандартную библио
     3. Описать метод рассчёта площади прямоугольника
     4. Описать метод рассчёта площади треугольника по формуле Герона
     5. Описать метод рассчёта площади треугольника через основание и высоту
-
+    \\\\\\\\
     В конце прошу округлять вычисления до двух знаков после запятой, используя
     double rounded = round(value * 100.0) / 100.0 - вернёт число с двумя знаками после запятой
     Помимо вычислений, каждый метод должен делать аккуратный вывод результата в консоль
     */
 
+
 class Calculator
 {
 public:
 
-    /// <summary>
-    /// Вычисляет сумму двух чисел с плавающей запятой
-    /// </summary>
-    /// <param name="a">Первое значение</param>
-    /// <param name="b">Второе значение</param>
-    /// <returns>Итоговая сумма</returns>
     static double Sum(double a, double b)
     {
-        // Вычисляем
         double sum = a + b;
-        // Округляем
         double result = round(sum * 100.0) / 100.0;
-        // Выводим в консоль рассчёты
-        cout << "Сумма: " << sum << endl;
 
+        cout << "Сумма: " << result << endl;
+
+        return result;
+    }
+
+    int Sum(int a, int b)
+    {
+        int sum = a + b;
         return sum;
     }
 
+    int otr(int a, int b)
+    {
+        int otr = a - b;
+        return otr;
+    }
+
+    int mult(int a, int b)
+    {
+        int mult = a * b;
+        return mult;
+    }
+
+    int spl(int a, int b)
+    {
+        int spl = a / b;
+        return spl;
+    }
+ main
     // Подзадача 2
     static double CircleArea(double radius)
     {
@@ -68,7 +86,7 @@ public:
 
         cout << "Площадь круга: " << result << endl;
 
-        return result;
+        return 0;
     }
 
     // Подзадача 3
@@ -93,13 +111,37 @@ public:
 int main()
 {
     Console::SetRussianOnWindows();
-    // Подзадача 1
 
-    // Для проверки задания: снять комментарии, заполнить методы переменными, 
-    // запустить и посмотреть консольный вывод
-    Calculator::Sum(3., 5.);
-    // Calculator::CircleArea();
-    // Calculator::RectangleArea();
-    // Calculator::TriangleArea();
-    // Calculator::TriangleArea();
+    // Подзадача 1.1
+    cout << "Калькулятор геометрических фигур" << endl;
+    cout << "Введите три числовых значения." << endl;
+    cout << endl;
+
+    // Подзадача 1.2
+    double first;
+    double second;
+    double third;
+
+    cout << "Введите первое значение: ";
+    cin >> first;
+
+    cout << "Введите второе значение: ";
+    cin >> second;
+
+    cout << "Введите третье значение: ";
+    cin >> third;
+
+    cout << endl;
+
+    cout << "Вы ввели:" << endl;
+    cout << "Первое значение: " << first << endl;
+    cout << "Второе значение: " << second << endl;
+    cout << "Третье значение: " << third << endl;
+
+    cout << endl;
+
+    // Проверк
+    Calculator::Sum(first, second);
+
+    return 0;
 }
