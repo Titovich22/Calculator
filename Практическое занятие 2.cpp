@@ -74,7 +74,8 @@ public:
         int spl = a / b;
         return spl;
     }
-     // Подзадача 2
+ 
+    // Подзадача 2
     static double CircleArea(double radius)
     {
         const double PI = 3.14;
@@ -120,27 +121,28 @@ int main()
     double first;
     double second;
     double third;
+    double radius;
 
-    cout << "Введите первое значение: ";
-    cin >> first;
+    cout << "Введите радиус: ";
+    cin >> radius;
 
-    cout << "Введите второе значение: ";
+    /*cout << "Введите второе значение: ";
     cin >> second;
 
     cout << "Введите третье значение: ";
-    cin >> third;
+    cin >> third;*/
 
     cout << endl;
 
     cout << "Вы ввели:" << endl;
-    cout << "Первое значение: " << first << endl;
-    cout << "Второе значение: " << second << endl;
-    cout << "Третье значение: " << third << endl;
+    cout << "Первое значение: " << radius << endl;
+    //cout << "Второе значение: " << second << endl;
+    //cout << "Третье значение: " << third << endl;
 
     cout << endl;
 
     // Проверк
-    Calculator::Sum(first, second);
+    Calculator::CircleArea(radius);
 
     return 0;
 }
