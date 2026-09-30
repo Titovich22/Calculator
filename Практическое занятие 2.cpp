@@ -4,7 +4,7 @@
 #include "Переменные.cpp"
 #include "Консоль.cpp"
 
-using namespace std; // Используем стандартную библиотек
+using namespace std; // Используем стандартную библиоте
 
 /*
     Групповое занятие: совместными усилиями реализовать доп. функции калькулятора
@@ -75,9 +75,18 @@ public:
     {
         int spl = a / b;
         return spl;
+    }
     // Подзадача 2
     static double CircleArea(double radius)
     {
+        const double PI = 3.14;
+
+        double area = PI * radius * radius;
+
+        double result = round(area * 100.0) / 100.0;
+
+        cout << "Площадь круга: " << result << endl;
+
         return 0;
     }
 
