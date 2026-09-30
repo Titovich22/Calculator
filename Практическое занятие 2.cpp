@@ -74,8 +74,7 @@ public:
         int spl = a / b;
         return spl;
     }
- main
-    // Подзадача 2
+     // Подзадача 2
     static double CircleArea(double radius)
     {
         const double PI = 3.14;
