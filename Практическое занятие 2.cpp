@@ -60,7 +60,15 @@ public:
     // Подзадача 2
     static double CircleArea(double radius)
     {
-        return 0;
+        const double PI = 3.14;
+
+        double area = PI * radius * radius;
+
+        double result = round(area * 100.0) / 100.0;
+
+        cout << "Площадь круга: " << result << endl;
+
+        return result;
     }
 
     // Подзадача 3
