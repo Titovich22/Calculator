@@ -82,6 +82,8 @@ public:
     }
 
     // Подзадача 3
+        static double RectangleArea(double first, double second)
+        {
 #include <iostream>
 #include <limits>
 #include <stdexcept>
