@@ -1,4 +1,4 @@
-﻿#include <iostream> // Используем заголовочный файл потока ввода/вывода
+#include <iostream> // Используем заголовочный файл потока ввода/вывода
 #include <cmath> // Используем заголовочный файл математических функций
 
 #include "Переменные.cpp"
@@ -82,65 +82,61 @@ public:
     }
 
     // Подзадача 3
-    static double RectangleArea(double first, double second)
-    { 
+        {
 #include <iostream>
 #include <limits>
 #include <stdexcept>
-
-// Метод расчёта площади прямоугольника
-double rectangleArea(double a, double b) {
-    if (a <= 0.0 || b <= 0.0) {
-        throw std::invalid_argument("Стороны прямоугольника должны быть положительными.");
-    }
-    return a * b;
-}
-
-int main() {
-    std::cout << "Расчёт площади прямоугольника (macOS, C++)\n";
-    std::cout << "Введите длины сторон a и b (положительные числа).\n\n";
-
-    while (true) {
-        double a, b;
-
-        std::cout << "a = ";
-        if (!(std::cin >> a)) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Ошибка ввода для a. Попробуйте ещё раз.\n";
-            continue;
+            
+            // Метод расчёта площади прямоугольника
+            double rectangleArea(double a, double b) {
+                if (a <= 0.0 || b <= 0.0) {
+                    throw std::invalid_argument("Стороны прямоугольника должны быть положительными.");
+                }
+                return a * b;
+            }
+            
+            int main() {
+                std::cout << "Расчёт площади прямоугольника (macOS, C++)\n";
+                std::cout << "Введите длины сторон a и b (положительные числа).\n\n";
+                
+                while (true) {
+                    double a, b;
+                    
+                    std::cout << "a = ";
+                    if (!(std::cin >> a)) {
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        std::cout << "Ошибка ввода для a. Попробуйте ещё раз.\n";
+                        continue;
+                    }
+                    
+                    std::cout << "b = ";
+                    if (!(std::cin >> b)) {
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        std::cout << "Ошибка ввода для b. Попробуйте ещё раз.\n";
+                        continue;
+                    }
+                    
+                    try {
+                        double area = rectangleArea(a, b);
+                        std::cout << "Площадь прямоугольника: " << area << "\n";
+                    } catch (const std::exception& e) {
+                        std::cout << "Ошибка: " << e.what() << "\n";
+                    }
+                    
+                    std::cout << "Продолжить? (y/n): ";
+                    char cont;
+                    if (!(std::cin >> cont) || (cont != 'y' && cont != 'Y')) {
+                        break;
+                    }
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    std::cout << "\n";
+                }
+                
+                std::cout << "Программа завершена.\n";
+            return 0;
         }
-
-        std::cout << "b = ";
-        if (!(std::cin >> b)) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Ошибка ввода для b. Попробуйте ещё раз.\n";
-            continue;
-        }
-
-        try {
-            double area = rectangleArea(a, b);
-            std::cout << "Площадь прямоугольника: " << area << "\n";
-        } catch (const std::exception& e) {
-            std::cout << "Ошибка: " << e.what() << "\n";
-        }
-
-        std::cout << "Продолжить? (y/n): ";
-        char cont;
-        if (!(std::cin >> cont) || (cont != 'y' && cont != 'Y')) {
-            break;
-        }
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "\n";
-    }
-
-    std::cout << "Программа завершена.\n";
-    return 0;
-}
-
-        return 0;
-    }
 
     // Подзадача 4
     static double TriangleArea(double first, double second, double third)
