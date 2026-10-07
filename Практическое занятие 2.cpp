@@ -1,4 +1,3 @@
-
 #include <iostream> // Используем заголовочный файл потока ввода/вывода
 #include <cmath> // Используем заголовочный файл математических функций
 
@@ -92,26 +91,42 @@ public:
     }
 
     // Подзадача 3
-    static double RectangleArea(double first, double second)
-    { 
+        static double RectangleArea(double first, double second)
+        {
 #include <iostream>
 #include <limits>
 #include <stdexcept>
+#include <cmath>
 
-// Метод расчёта площади прямоугольника
-double rectangleArea(double a, double b) {
-    if (a <= 0.0 || b <= 0.0) {
-        throw std::invalid_argument("Стороны прямоугольника должны быть положительными.");
+// Метод расчёта площади треугольника по формуле Герона
+double triangleAreaHeron(double a, double b, double c) {
+    // Проверка на положительность сторон
+    if (a <= 0.0 || b <= 0.0 || c <= 0.0) {
+        throw std::invalid_argument("Стороны треугольника должны быть положительными.");
     }
-    return a * b;
+
+    // Проверка неравенства треугольника
+    if (a + b <= c || a + c <= b || b + c <= a) {
+        throw std::invalid_argument("Такие стороны не образуют треугольник.");
+    }
+
+    double p = (a + b + c) / 2.0;              // полупериметр
+    double underRoot = p * (p - a) * (p - b) * (p - c);
+
+    // Защита от возможных малых отрицательных значений из-за погрешностей
+    if (underRoot < 0.0) {
+        underRoot = 0.0;
+    }
+
+    return std::sqrt(underRoot);
 }
 
 int main() {
-    std::cout << "Расчёт площади прямоугольника (macOS, C++)\n";
-    std::cout << "Введите длины сторон a и b (положительные числа).\n\n";
+    std::cout << "Расчёт площади треугольника по формуле Герона (macOS, C++)\n";
+    std::cout << "Введите длины трёх сторон a, b, c (положительные числа).\n\n";
 
     while (true) {
-        double a, b;
+        double a, b, c;
 
         std::cout << "a = ";
         if (!(std::cin >> a)) {
@@ -129,9 +144,17 @@ int main() {
             continue;
         }
 
+        std::cout << "c = ";
+        if (!(std::cin >> c)) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Ошибка ввода для c. Попробуйте ещё раз.\n";
+            continue;
+        }
+
         try {
-            double area = rectangleArea(a, b);
-            std::cout << "Площадь прямоугольника: " << area << "\n";
+            double area = triangleAreaHeron(a, b, c);
+            std::cout << "Площадь треугольника: " << area << "\n";
         } catch (const std::exception& e) {
             std::cout << "Ошибка: " << e.what() << "\n";
         }
@@ -148,9 +171,6 @@ int main() {
     std::cout << "Программа завершена.\n";
     return 0;
 }
-
-        return 0;
-    }
 
     // Подзадача 4
     static double TriangleArea(double first, double second, double third)
