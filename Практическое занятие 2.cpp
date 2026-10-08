@@ -69,12 +69,17 @@ public:
         return mult;
     }
 
-    int spl(int a, int b)
+    static int spl(int a, int b)
     {
+        if (b == 0)
+        {
+            cout << "Делить на ноль нельзя";
+            return -1;
+        }
         int spl = a / b;
         return spl;
     }
- main
+
     // Подзадача 2
     static double CircleArea(double radius)
     {
@@ -106,42 +111,133 @@ public:
     {
         return 0;
     }
+
+    //  метод факториала
+    static int Factorial(int num)
+    {
+        if (num < 0) {
+            return  0;
+        }
+        int result = 1;
+        for (int i = 2; i <= num; ++i) {
+            result *= i;
+        }
+        // Выводим в консоль рассчёты
+        cout << "Факториал: " << result << endl;
+        return result;
+    }
+
+
 };
 
 int main()
 {
     Console::SetRussianOnWindows();
 
-    // Подзадача 1.1
-    cout << "Калькулятор геометрических фигур" << endl;
-    cout << "Введите три числовых значения." << endl;
-    cout << endl;
+    while (true)
+    {
+        int code;
+        cout << "Выбери кейс 1-5 " << endl;
+        cout << "[1] Площадь круга" << endl;
+        cout << "[2] Площадь прямоугольника" << endl;
+        cout << "[3] Площадь треугольника (Герон)" << endl;
+        cout << "[4] Площадь треугольника" << endl;
+        cout << "[5] Факториал" << endl;
+        cin >> code;
 
-    // Подзадача 1.2
-    double first;
-    double second;
-    double third;
+        if (code == 0) break;
 
-    cout << "Введите первое значение: ";
-    cin >> first;
+        switch (code)
+        {
+        case 1:
+            double radius;
+            cout << "Введите радиус" << endl;
+            cin >> radius;
+            Calculator::CircleArea(radius);
+            break;
+        case 2:
+            double re_first;
+            double re_second;
+            cout << "Введите сторону а" << endl;
+            cin >> re_first;
+            cout << "Введите сторону b" << endl;
+            cin >> re_second;
+            Calculator::RectangleArea(re_first, re_second);
+            break;
+        case 3:
+            double de_first;
+            double de_second;
+            double  de_third;
+            cout << "Введите сторону а" << endl;
+            cin >> de_first;
+            cout << "Введите сторону b" << endl;
+            cin >> de_second;
+            cout << "Введите сторону с" << endl;
+            cin >> de_third;
+            Calculator::TriangleArea(de_first, de_second, de_third);
 
-    cout << "Введите второе значение: ";
-    cin >> second;
+            break;
+        case 4:
+            double base;
+            double hight;
+            cout << "Введите основание" << endl;
+            cin >> base;
+            cout << "Введите высоту" << endl;
+            cin >> hight;
+            Calculator::TriangleArea(base, hight);
+            break;
+        case 5:
+            int num;
+            cout << "Введите число" << endl;
+            cin >> num;
+            Calculator::Factorial(num);
+            break;
+        default:
+            cout << "не верные значения" << endl;
+            break;
+        }
+    }
+    {
 
-    cout << "Введите третье значение: ";
-    cin >> third;
+        Calculator::spl(3, 0);
+        Console::SetRussianOnWindows();
 
-    cout << endl;
 
-    cout << "Вы ввели:" << endl;
-    cout << "Первое значение: " << first << endl;
-    cout << "Второе значение: " << second << endl;
-    cout << "Третье значение: " << third << endl;
+        // Подзадача 1.1
+        cout << "Калькулятор геометрических фигур" << endl;
+        cout << "Введите три числовых значения." << endl;
+        cout << endl;
 
-    cout << endl;
+        // Подзадача 1.2
+        double first;
+        double second;
+        double third;
 
-    // Проверк
-    Calculator::Sum(first, second);
+        cout << "Введите первое значение: ";
+        cin >> first;
 
-    return 0;
+        cout << "Введите второе значение: ";
+        cin >> second;
+
+        cout << "Введите третье значение: ";
+        cin >> third;
+
+        cout << endl;
+
+        cout << "Вы ввели:" << endl;
+        cout << "Первое значение: " << first << endl;
+        cout << "Второе значение: " << second << endl;
+        cout << "Третье значение: " << third << endl;
+
+        cout << endl;
+
+        // Проверк
+        Calculator::Sum(first, second);
+
+        return 0;
+    }
 }
+
+struct RussianInit {
+    RussianInit() { Console::SetRussianOnWindows(); }
+} russianInitInstance;
