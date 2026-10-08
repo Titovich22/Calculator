@@ -119,9 +119,90 @@ double triangleAreaHeron(double a, double b, double c) {
     }
 
     return std::sqrt(underRoot);
+    //  метод факториала
+    static int Factorial(int num)
+    {
+        if (num < 0) {
+            return  0;
+        }
+        int result = 1;
+        for (int i = 2; i <= num; ++i) {
+            result *= i;
+        }
+        // Выводим в консоль рассчёты
+        cout << "Факториал: " << result << endl;
+        return result;
+    }
 }
 
-int main() {
+int main()
+              {
+                Console::SetRussianOnWindows();
+                        
+                while (true)
+                {
+                    int code;
+                    cout << "Выбери кейс 1-5 " << endl;
+                    cout << "[1] Площадь круга" << endl;
+                    cout << "[2] Площадь прямоугольника" << endl;
+                    cout << "[3] Площадь треугольника (Герон)" << endl;
+                    cout << "[4] Площадь треугольника" << endl;
+                    cout << "[5] Факториал" << endl;
+                    cin >> code;
+
+                    if (code == 0) break;
+
+                    switch (code)
+                    {
+                    case 1:
+                        double radius;
+                        cout << "Введите радиус" << endl;
+                        cin >> radius;
+                        Calculator::CircleArea(radius);
+                        break;
+                    case 2:
+                        double first1;
+                        double second2;
+                        cout << "Введите сторону а" << endl;
+                        cin >> first1;
+                        cout << "Введите сторону b" << endl;
+                        cin >> second2;
+                        Calculator::RectangleArea(first1, second2);
+                        break;
+                    case 3:
+                        double first3;
+                        double second4;
+                        double  third5;
+                        cout << "Введите сторону а" << endl;
+                        cin >> first3;
+                        cout << "Введите сторону b" << endl;
+                        cin >> second4;
+                        cout << "Введите сторону с" << endl;
+                        cin >> third5;
+                        Calculator::TriangleArea(first3, second4, third5);
+
+                        break;
+                    case 4:
+                        double base;
+                        double hight;
+                        cout << "Введите основание" << endl;
+                        cin >> base;
+                        cout << "Введите высоту" << endl;
+                        cin >> hight;
+                        Calculator::TriangleArea(base, hight);
+                        break;
+                    case 5:
+                        int num;
+                        cout << "Введите число" << endl;
+                        cin >> num;
+                        Calculator::Factorial(num);
+                        break;
+                    default:
+                        cout << "не верные значения" << endl;
+                        break;
+                    }
+                }
+            {
     std::cout << "Расчёт площади треугольника по формуле Герона (macOS, C++)\n";
     std::cout << "Введите длины трёх сторон a, b, c (положительные числа).\n\n";
 
