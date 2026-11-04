@@ -91,167 +91,15 @@ public:
     }
 
     // Подзадача 3
-        static double RectangleArea(double first, double second)
-        {
-#include <iostream>
-#include <limits>
-#include <stdexcept>
-#include <cmath>
-
-// Метод расчёта площади треугольника по формуле Герона
-double triangleAreaHeron(double a, double b, double c) {
-    // Проверка на положительность сторон
-    if (a <= 0.0 || b <= 0.0 || c <= 0.0) {
-        throw std::invalid_argument("Стороны треугольника должны быть положительными.");
-    }
-
-    // Проверка неравенства треугольника
-    if (a + b <= c || a + c <= b || b + c <= a) {
-        throw std::invalid_argument("Такие стороны не образуют треугольник.");
-    }
-
-    double p = (a + b + c) / 2.0;              // полупериметр
-    double underRoot = p * (p - a) * (p - b) * (p - c);
-
-    // Защита от возможных малых отрицательных значений из-за погрешностей
-    if (underRoot < 0.0) {
-        underRoot = 0.0;
-    }
-
-    return std::sqrt(underRoot);
-    //  метод факториала
-    static int Factorial(int num)
+    static double RectangleArea(double first, double second)
     {
-        if (num < 0) {
-            return  0;
-        }
-        int result = 1;
-        for (int i = 2; i <= num; ++i) {
-            result *= i;
-        }
-        // Выводим в консоль рассчёты
-        cout << "Факториал: " << result << endl;
-        return result;
+        double value = first * second;
+        double rounded = round(value * 100.0) / 100.0;
+
+        cout << "Площадь прямоугольника: " << rounded << endl;
+
+        return rounded;
     }
-}
-
-int main()
-              {
-                Console::SetRussianOnWindows();
-                        
-                while (true)
-                {
-                    int code;
-                    cout << "Выбери кейс 1-5 " << endl;
-                    cout << "[1] Площадь круга" << endl;
-                    cout << "[2] Площадь прямоугольника" << endl;
-                    cout << "[3] Площадь треугольника (Герон)" << endl;
-                    cout << "[4] Площадь треугольника" << endl;
-                    cout << "[5] Факториал" << endl;
-                    cin >> code;
-
-                    if (code == 0) break;
-
-                    switch (code)
-                    {
-                    case 1:
-                        double radius;
-                        cout << "Введите радиус" << endl;
-                        cin >> radius;
-                        Calculator::CircleArea(radius);
-                        break;
-                    case 2:
-                        double first1;
-                        double second2;
-                        cout << "Введите сторону а" << endl;
-                        cin >> first1;
-                        cout << "Введите сторону b" << endl;
-                        cin >> second2;
-                        Calculator::RectangleArea(first1, second2);
-                        break;
-                    case 3:
-                        double first3;
-                        double second4;
-                        double  third5;
-                        cout << "Введите сторону а" << endl;
-                        cin >> first3;
-                        cout << "Введите сторону b" << endl;
-                        cin >> second4;
-                        cout << "Введите сторону с" << endl;
-                        cin >> third5;
-                        Calculator::TriangleArea(first3, second4, third5);
-
-                        break;
-                    case 4:
-                        double base;
-                        double hight;
-                        cout << "Введите основание" << endl;
-                        cin >> base;
-                        cout << "Введите высоту" << endl;
-                        cin >> hight;
-                        Calculator::TriangleArea(base, hight);
-                        break;
-                    case 5:
-                        int num;
-                        cout << "Введите число" << endl;
-                        cin >> num;
-                        Calculator::Factorial(num);
-                        break;
-                    default:
-                        cout << "не верные значения" << endl;
-                        break;
-                    }
-                }
-            {
-    std::cout << "Расчёт площади треугольника по формуле Герона (macOS, C++)\n";
-    std::cout << "Введите длины трёх сторон a, b, c (положительные числа).\n\n";
-
-    while (true) {
-        double a, b, c;
-
-        std::cout << "a = ";
-        if (!(std::cin >> a)) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Ошибка ввода для a. Попробуйте ещё раз.\n";
-            continue;
-        }
-
-        std::cout << "b = ";
-        if (!(std::cin >> b)) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Ошибка ввода для b. Попробуйте ещё раз.\n";
-            continue;
-        }
-
-        std::cout << "c = ";
-        if (!(std::cin >> c)) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Ошибка ввода для c. Попробуйте ещё раз.\n";
-            continue;
-        }
-
-        try {
-            double area = triangleAreaHeron(a, b, c);
-            std::cout << "Площадь треугольника: " << area << "\n";
-        } catch (const std::exception& e) {
-            std::cout << "Ошибка: " << e.what() << "\n";
-        }
-
-        std::cout << "Продолжить? (y/n): ";
-        char cont;
-        if (!(std::cin >> cont) || (cont != 'y' && cont != 'Y')) {
-            break;
-        }
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "\n";
-    }
-
-    std::cout << "Программа завершена.\n";
-    return 0;
-}
 
     // Подзадача 4
     static double TriangleArea(double first, double second, double third)
@@ -442,76 +290,22 @@ int main() {
 
     return 0;
 }
-int main ()
-case 1: // Радиус
-    double radius;
-    cout << "Введите радиус";
-    cin >> radius;
-    Calculator::CircleArea(radius);
-    break;
+int main()
 {
-    Console::SetRussianOnWindows();
-            
-    while (true)
-    {
-        int code;
-        cout << "Выбери кейс 1-5 " << endl;
-        cout << "[1] Площадь круга" << endl;
-        cout << "[2] Площадь прямоугольника" << endl;
-        cout << "[3] Площадь треугольника (Герон)" << endl;
-        cout << "[4] Площадь треугольника" << endl;
-        cout << "[5] Факториал" << endl;
-        cin >> code;
+    Console::SetUnicode();
 
-        if (code == 0) break;
+    cout << "Калькулятор площади фигур" << endl;
 
-        switch (code)
-        {
-        case 1:
-            double radius;
-            cout << "Введите радиус" << endl;
-            cin >> radius;
-            Calculator::CircleArea(radius);
-            break;
-        case 2:
-            double first1;
-            double second2;
-            cout << "Введите сторону а" << endl;
-            cin >> first1;
-            cout << "Введите сторону b" << endl;
-            cin >> second2;
-            Calculator::RectangleArea(first1, second2);
-            break;
-        case 3:
-            double first3;
-            double second4;
-            double  third5;
-            cout << "Введите сторону а" << endl;
-            cin >> first3;
-            cout << "Введите сторону b" << endl;
-            cin >> second4;
-            cout << "Введите сторону с" << endl;
-            cin >> third5;
-            Calculator::TriangleArea(first3, second4, third5);
+    double first, second, third;
 
-            break;
-        case 4:
-            double base;
-            double hight;
-            cout << "Введите основание" << endl;
-            cin >> base;
-            cout << "Введите высоту" << endl;
-            cin >> hight;
-            Calculator::TriangleArea(base, hight);
-            break;
-        case 5:
-            int num;
-            cout << "Введите число" << endl;
-            cin >> num;
-            Calculator::Factorial(num);
-            break;
-        default:
-            cout << "не верные значения" << endl;
-            break;
-        }
-    }
+    cout << "Введите три значения: ";
+    cin >> first >> second >> third;
+
+    Calculator::CircleArea(first);
+    Calculator::RectangleArea(first, second);
+    Calculator::TrapezoidArea(first, second, third);
+    Calculator::TriangleArea(first, second, third);
+    Calculator::TriangleArea(first, second);
+
+    return 0;
+}
